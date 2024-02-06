@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0"><channel><title>echo</title><link>https://example.com/en/</link><description>Recent content on echo</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 04 Mar 2018 16:01:23 +0800</lastBuildDate><atom:link href="https://example.com/en/index.xml" rel="self" type="application/rss+xml"/><item><title>关于</title><link>https://example.com/en/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://example.com/en/about/</guid><description>&lt;p>This website was created in July 2022, in the Chinese lunar calendar year of Ren Yin.&lt;/p></description></item><item><title>Note 2</title><link>https://example.com/en/2018/03/04/note-2/</link><pubDate>Sun, 04 Mar 2018 16:01:23 +0800</pubDate><guid>https://example.com/en/2018/03/04/note-2/</guid><description>&lt;p>This is a simple note.&lt;/p></description></item><item><title>Shortcodes Preview</title><link>https://example.com/en/2018/03/04/shortcodes-preview/</link><pubDate>Sun, 04 Mar 2018 16:01:23 +0800</pubDate><guid>https://example.com/en/2018/03/04/shortcodes-preview/</guid><description>&lt;h2 id="twiiter">Twiiter&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0"><channel><title>echo</title><link>https://www.inecho.cc/en/</link><description>Recent content on echo</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 04 Mar 2018 16:01:23 +0800</lastBuildDate><atom:link href="https://www.inecho.cc/en/index.xml" rel="self" type="application/rss+xml"/><item><title>关于</title><link>https://www.inecho.cc/en/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://www.inecho.cc/en/about/</guid><description>&lt;p>This website was created in July 2022, in the Chinese lunar calendar year of Ren Yin.&lt;/p></description></item><item><title>Note 2</title><link>https://www.inecho.cc/en/2018/03/04/note-2/</link><pubDate>Sun, 04 Mar 2018 16:01:23 +0800</pubDate><guid>https://www.inecho.cc/en/2018/03/04/note-2/</guid><description>&lt;p>This is a simple note.&lt;/p></description></item><item><title>Shortcodes Preview</title><link>https://www.inecho.cc/en/2018/03/04/shortcodes-preview/</link><pubDate>Sun, 04 Mar 2018 16:01:23 +0800</pubDate><guid>https://www.inecho.cc/en/2018/03/04/shortcodes-preview/</guid><description>&lt;h2 id="twiiter">Twiiter&lt;/h2>
 &lt;h2 id="google-map">Google Map&lt;/h2>
 &lt;div class="embed googlemaps">
 &lt;iframe
@@ -11,11 +11,11 @@ height="400"
 &lt;/iframe>
 &lt;/div>
 &lt;h2 id="figure">Figure&lt;/h2>
-&lt;link rel="stylesheet" href="https://example.com/css/hugo-easy-gallery.css" />
+&lt;link rel="stylesheet" href="https://www.inecho.cc/css/hugo-easy-gallery.css" />
 &lt;div class="box aligncenter" style="max-width:300px;">
 &lt;figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
 &lt;div class="img">
-&lt;img itemprop="thumbnail" src="https://example.com/images/globe.svg" alt="Globe" />
+&lt;img itemprop="thumbnail" src="https://www.inecho.cc/images/globe.svg" alt="Globe" />
 &lt;/div>
 &lt;figcaption>
 &lt;p>&lt;strong>Globe&lt;/strong>
@@ -27,4 +27,4 @@ height="400"
 &lt;div class="sh-highlight">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># test&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="nb">test&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># just a test&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> hello world&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div></description></item><item><title>Note 1</title><link>https://example.com/en/2018/03/03/note-1/</link><pubDate>Sat, 03 Mar 2018 16:01:23 +0800</pubDate><guid>https://example.com/en/2018/03/03/note-1/</guid><description>&lt;p>This is a simple note.&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;span class="line hl">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> hello world&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div></description></item><item><title>Note 1</title><link>https://www.inecho.cc/en/2018/03/03/note-1/</link><pubDate>Sat, 03 Mar 2018 16:01:23 +0800</pubDate><guid>https://www.inecho.cc/en/2018/03/03/note-1/</guid><description>&lt;p>This is a simple note.&lt;/p></description></item></channel></rss>
