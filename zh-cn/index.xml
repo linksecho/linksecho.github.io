@@ -278,7 +278,59 @@ touch /tmp/kcM0Wewe
 &lt;p>&lt;img src="img/20240219214058.png" alt="image.png">&lt;/p>
 &lt;p>运行成功，成功将密码修改成 Earth，提权成功！&lt;/p>
 &lt;p>查找 root flag&lt;/p>
-&lt;p>&lt;img src="img/20240219214209.png" alt="image.png">&lt;/p></description></item><item><title>周报 01 - 过年的胡思乱想</title><link>https://www.inecho.cc/zh-cn/2024/02/09/%E5%91%A8%E6%8A%A5-01-%E8%BF%87%E5%B9%B4%E7%9A%84%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/</link><pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate><guid>https://www.inecho.cc/zh-cn/2024/02/09/%E5%91%A8%E6%8A%A5-01-%E8%BF%87%E5%B9%B4%E7%9A%84%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/</guid><description>&lt;p>今天是二零二四年二月九日，农历十二月三十，大年三十。每年过年的时候我总会在客厅茶几上摆上电脑，打开电视播着春晚，在电脑前上坐一坐，坐在这里其实也不是为了看春晚。&lt;/p>
+&lt;p>&lt;img src="img/20240219214209.png" alt="image.png">&lt;/p>
+&lt;hr>
+&lt;h2 id="总结">总结&lt;/h2>
+&lt;h3 id="1手动在-hosts-文件中添加-dns-解析">1、手动在 hosts 文件中添加 DNS 解析&lt;/h3>
+&lt;h3 id="2xor-异或加密">2、XOR 异或加密&lt;/h3>
+&lt;p>异或密码（simple XOR cipher）是密码学中一种简单的加密算法，是指&lt;strong>对信息进行异或操作来达到加密和解密目的&lt;/strong>。 按这种逻辑，文本串行的每个字符可以通过与给定的密钥进行按位异或运算来加密。 如果要解密，只需要将加密后的结果与密钥再次进行按位异或运算即可。详细参见「[[1008-密文加密编码#^5cd7b2]]」&lt;/p>
+&lt;h3 id="3解密网站-httpsgchqgithubiocyberchef">3、解密网站： &lt;a href="https://gchq.github.io/CyberChef/">https://gchq.github.io/CyberChef/&lt;/a>&lt;/h3>
+&lt;p>该网站可以对 XOR 异或加密算法 、Hash 算法等加密算法进行解密&lt;/p>
+&lt;h3 id="4find-命令">4、find 命令&lt;/h3>
+&lt;p>使用 find 命令查找具有 root 权限的命令&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">find / -perm -u&lt;span class="o">=&lt;/span>s -type f 2&amp;gt;/dev/null
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详细参见「&lt;a href="https://wangchujiang.com/linux-command/c/find.html">Linux find 命令&lt;/a>」&lt;/p>
+&lt;h3 id="5反弹-shell-与-ip-地址-16-进制绕过">5、反弹 shell 与 IP 地址 16 进制绕过&lt;/h3>
+&lt;p>这里要先说一个概念即 SSRF 过滤，一些开发者会通过对传过来的URL参数进行正则匹配的方式来过滤掉IP。对于这种过滤我们可以采用改编IP的写法的方式进行绕过，例如将IP地址转换成16进制。&lt;/p>
+&lt;h3 id="6strings-命令">6、strings 命令&lt;/h3>
+&lt;p>在对象文件或二进制文件中查找可打印的字符串&lt;/p>
+&lt;p>详细参见「&lt;a href="https://wangchujiang.com/linux-command/c/strings.html">Linux strings 命令&lt;/a>」&lt;/p>
+&lt;h3 id="7nc-传送文件功能">7、nc 传送文件功能&lt;/h3>
+&lt;h4 id="方法1传输文件演示先启动接收命令">方法1，传输文件演示（先启动接收命令）&lt;/h4>
+&lt;p>使用nc传输文件还是比较方便的，因为不用scp和rsync那种输入密码的操作了&lt;/p>
+&lt;p>把A机器上的一个rpm文件发送到B机器上&lt;/p>
+&lt;p>需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。&lt;/p>
+&lt;h5 id="步骤1先在b机器上启动一个接收文件的监听格式如下">&lt;strong>步骤1，先在B机器上启动一个接收文件的监听，格式如下&lt;/strong>&lt;/h5>
+&lt;p>意思是把赖在9995端口接收到的数据都写到file文件里（这里文件名随意取）&lt;/p>
+&lt;p>nc -l port &amp;gt;file&lt;/p>
+&lt;p>nc -l 9995 &amp;gt;zabbix.rpm&lt;/p>
+&lt;p>&lt;img src="img/1076878-20161209100917507-1008395936.png" alt="">&lt;/p>
+&lt;h5 id="步骤2在a机器上往b机器的9995端口发送数据把下面rpm包发送过去">&lt;strong>步骤2，在A机器上往B机器的9995端口发送数据，把下面rpm包发送过去&lt;/strong>&lt;/h5>
+&lt;p>nc 10.0.1.162 9995 &amp;lt; zabbix-release-2.4-1.el6.noarch.rpm&lt;/p>
+&lt;p>&lt;img src="img/1076878-20161209100931116-1268991306.png" alt="">&lt;/p>
+&lt;p>B机器接收完毕，它会自动退出监听，文件大小和A机器一样，md5值也一样&lt;/p>
+&lt;p>&lt;img src="img/1076878-20161209100944897-733297904.png" alt="">&lt;/p>
+&lt;h4 id="方法2传输文件演示先启动发送命令">&lt;strong>方法2，传输文件演示（先启动发送命令）&lt;/strong>&lt;/h4>
+&lt;h5 id="步骤1先在b机器上启动发送文件命令">&lt;strong>步骤1，先在B机器上，启动发送文件命令&lt;/strong>&lt;/h5>
+&lt;p>下面命令表示通过本地的9992端口发送test.mv文件&lt;/p>
+&lt;p>nc -l 9992 &amp;lt;test.mv&lt;/p>
+&lt;p>&lt;img src="img/1076878-20161209101002038-290824858.png" alt="">&lt;/p>
+&lt;h5 id="步骤2a机器上连接b机器取接收文件">&lt;strong>步骤2，A机器上连接B机器，取接收文件&lt;/strong>&lt;/h5>
+&lt;p>下面命令表示通过连接B机器的9992端口接收文件，并把文件存到本目录下，文件名为test2.mv&lt;/p>
+&lt;p>nc 10.0.1.162 9992 &amp;gt;test2.mv&lt;/p>
+&lt;p>&lt;img src="img/1076878-20161209101017632-493505389.png" alt="">&lt;/p>
+&lt;h4 id="方法3传输目录演示方法发送文件类似">&lt;strong>方法3，传输目录演示（方法发送文件类似）&lt;/strong>&lt;/h4>
+&lt;h5 id="步骤1b机器先启动监听如下">&lt;strong>步骤1，B机器先启动监听，如下&lt;/strong>&lt;/h5>
+&lt;p>A机器给B机器发送多个文件&lt;/p>
+&lt;p>传输目录需要结合其它的命令，比如tar&lt;/p>
+&lt;p>经过我的测试管道后面最后必须是 - ，不能是其余自定义的文件名&lt;/p>
+&lt;p>nc -l 9995 | tar xfvz -&lt;/p>
+&lt;p>&lt;img src="img/1076878-20161209101035476-313895763.png" alt="">&lt;/p>
+&lt;h5 id="步骤2a机器打包文件并连接b机器的端口">&lt;strong>步骤2，A机器打包文件并连接B机器的端口&lt;/strong>&lt;/h5>
+&lt;p>管道前面表示把当前目录的所有文件打包为 - ，然后使用nc发送给B机器&lt;/p>
+&lt;p>tar cfz - * | nc 10.0.1.162 9995&lt;/p>
+&lt;p>&lt;img src="img/1076878-20161209101051101-1053431813.png" alt="">&lt;/p>
+&lt;p>B机器这边已经自动接收和解压&lt;/p></description></item><item><title>周报 01 - 过年的胡思乱想</title><link>https://www.inecho.cc/zh-cn/2024/02/09/%E5%91%A8%E6%8A%A5-01-%E8%BF%87%E5%B9%B4%E7%9A%84%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/</link><pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate><guid>https://www.inecho.cc/zh-cn/2024/02/09/%E5%91%A8%E6%8A%A5-01-%E8%BF%87%E5%B9%B4%E7%9A%84%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/</guid><description>&lt;p>今天是二零二四年二月九日，农历十二月三十，大年三十。每年过年的时候我总会在客厅茶几上摆上电脑，打开电视播着春晚，在电脑前上坐一坐，坐在这里其实也不是为了看春晚。&lt;/p>
 &lt;p>记得小时候有一年，家里全都是人特别热闹，我就坐在电脑前的沙发上，打着 CF 看着春晚，从今往后的每一年，在今天晚上我都会过来坐一坐，具体为什么这样我也说不上来，也许只是为了回忆一下曾经，毕竟我这个人还是挺爱怀念过去的，在这样的一个日子里没有道理不坐下来胡思乱想。&lt;/p>
 &lt;p>&lt;img src="img/e34d3519f88823774ca715eeb773100.jpg" alt="e34d3519f88823774ca715eeb773100">&lt;/p>
 &lt;p>我并非是一个很喜欢热闹的人，如果非要说那我可能是一个很矛盾的人，既喜欢热闹又热爱僻静的独处。因此，小的时候时候我很喜欢过年，以前总是觉得「过年」这两个字眼拥有巨大的魔力，好似听到便会闻到爆竹的硝烟和看到团圆的氛围，“年味”在回忆红从未减淡。但是在现实里，我却能切身实际的感觉到“年味”的消逝，就像这春晚一样一年不如一年。&lt;/p>
