@@ -810,7 +810,7 @@ touch /tmp/kcM0Wewe
 &lt;p>两个 GitHub 仓库和 GitHub Actions 配置成功后，下一步要在本地安装 &lt;a href="https://git-scm.com/">Git&lt;/a> 或 &lt;a href="https://desktop.github.com/">GitHub Desktop&lt;/a> 软件，这两款软件的作用是将我们存储在本地的 myNewSite 文件夹上传到 GitHub_Private_myNewSite 仓库。这里选择安装 GtiHub Desktop 这款软件。安装成功后点击 Sign in to Github.com 登录 GitHub 账户。软件的安装和配置可自行 Google ，基本上一路默认即可。&lt;/p>
 &lt;p>&lt;img src="img/image-20240204181111996.png" alt="">&lt;/p>
 &lt;p>登录成功后，我们选择将 myNewSite 仓库克隆到本地。克隆到本地的任意路径都可以，但是克隆到的路径不能有同名文件夹。&lt;/p>
-&lt;p>&lt;img src="" alt="">img/image-20240204182208153.png&lt;/p>
+&lt;p>&lt;img src="img/image-20240204182208153.png" alt="">&lt;/p>
 &lt;p>&lt;img src="img/image-20240204182323464.png" alt="">&lt;/p>
 &lt;p>克隆成功后本地会出现一个和仓库同名的文件夹，此时该文件夹内仅有 .git 隐藏文件夹（该文件夹是 GitHub Desktop 生成的配置文件，不可删除），我们将之前创建好的 Hugo 网站 myNewSite 中的所有文件都复制粘贴到这里面来，复制好之后旧的 myNewSite 文件夹就可以删除了。&lt;/p>
 &lt;p>然后，我们需要在本地创建 Actions 。在新的 myNewSite 文件夹根目录下创建 .github\workflows\main.yml 文件夹和文件，该文件是 GitHub Actions 中定义工作流程的配置文件。在这个文件中包含了一系列的步骤（steps），每个步骤定义了一个任务，例如构建代码、运行测试、部署应用程序等。这些步骤会在配置的触发事件（例如代码推送或Pull Request）发生时按顺序执行。创建好后在该文件中输入以下内容：&lt;/p>
